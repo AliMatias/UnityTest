@@ -2,7 +2,7 @@
 
 public class NucleonSpawner : MonoBehaviour
 {
-    public Nucleon[] nucleonPrefabs;
+    public Attractor[] nucleonPrefabs;
     [SerializeField]
     private Transform parent;
 
@@ -13,8 +13,10 @@ public class NucleonSpawner : MonoBehaviour
         {
             index = 0;
         }
-        Nucleon prefab = nucleonPrefabs[index];
-        Nucleon spawn = Instantiate<Nucleon>(prefab, parent);
-        spawn.transform.localPosition = Random.onUnitSphere;
+        Attractor prefab = nucleonPrefabs[index];
+        Attractor spawn = Instantiate<Attractor>(prefab, parent);
+        float randomNumber = Random.Range(0f, 0.2f);
+        Vector3 randomPosition = new Vector3(randomNumber,randomNumber,randomNumber);
+        spawn.transform.localPosition = randomPosition;
     }
 }
